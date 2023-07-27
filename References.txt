@@ -1,0 +1,9 @@
+Sean Pluto
+Owner of Studio Bidou
+Creator of Stickfigurez and Doors: The Game!
+https://store.steampowered.com/app/2476150/Stickfigurez/
+https://www.kickstarter.com/projects/hyunsdojo/doors-the-game
+I coded the more complicated attacks, implemented the blocking system,
+and more for Stickfigurez.
+You can contact him at studiobidou@gmail.com
+You can also contact me for his phone number. I don't want to show it in a public repo.
