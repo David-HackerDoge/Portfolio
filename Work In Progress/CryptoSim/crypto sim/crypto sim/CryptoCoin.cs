@@ -10,5 +10,13 @@ namespace crypto_sim
     {
         public Data data = new Data();
         public string timestamp = "";
+        public override string ToString()
+        {
+            string returnStr = "";
+            returnStr += data.ToString();
+            returnStr += "time: " + timestamp;
+
+            return returnStr;
+        }
     }
 }
