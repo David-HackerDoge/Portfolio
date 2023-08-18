@@ -10,8 +10,13 @@ using System.Drawing;
 using MySqlX.XDevAPI;
 
 //user parameters:
-int msBetweenApiCalls = 6000;
-string coinName = "tether";
+//int msBetweenApiCalls = 3600000;
+string[] coinName = { 
+    "bitcoin", "ethereum", "tether", "binance-coin", "xrp", "usd-coin", "dogecoin", "cardano", "solana", "tron", 
+    "polkadot", "polygon", "shiba-inu", "litecoin" , "multi-collateral-dai", "wrapped-bitcoin", "bitcoin-cash",
+    "avalanche", "unus-sed-leo", "chainlink", "stellar", "monero", "axie-infinity", "decentraland", "neo", "flow",
+    "gala", "mina", "ftx-token", "dash", "singularitynet", "ravencoin"
+};
 
 HttpClient client = new HttpClient();
 
@@ -52,51 +57,43 @@ sqlConnect.Open();
 //Console.WriteLine($"MySQL version : {sqlConnect.ServerVersion}");
 
 //loops infinitely, storing new bitcoin data in the database at set intervals
-while (true)
-{
-    //getting coin data
-    CryptoCoin btc = getCoin(coinName);
-    Console.WriteLine($"got coin data from api:\n{btc.ToString()}");
-
-    //creating table for new coin if needed
-    /*
-    if (coinName != "bitcoin")
+//while (true)
+//{
+    //looping through each coin
+    for (int i = 0; i < coinName.Length; i++)
     {
-        using var createTable = new MySqlCommand();
-        createTable.Connection = sqlConnect;
-        createTable.CommandText = $"create table if not exists {coinName} like bitcoin;";
-        createTable.ExecuteNonQuery();
+        //getting coin data
+        CryptoCoin btc = getCoin(coinName[i]);
+        Console.WriteLine($"got coin data from api:\n{btc.ToString()}");
+
+        //preparing coin data
+        string price = btc.data.priceUsd;
+        string rank = btc.data.rank;
+        string symbol = btc.data.symbol;
+        string name = btc.data.name;
+        string supply = btc.data.supply;
+        string maxSupply = btc.data.maxSupply;
+        string marketCap = btc.data.marketCapUsd;
+        string volume = btc.data.volumeUsd24Hr;
+        string changePercent = btc.data.changePercent24Hr;
+        string vwap = btc.data.vwap24Hr;
+        if (maxSupply == null)
+            maxSupply = "-1";
+
+        //inserting coin data
+        using var insertCoin = new MySqlCommand();
+        insertCoin.Connection = sqlConnect;
+        string command = $"INSERT INTO allCoins" +
+            $" (price, date, _rank, symbol, name, supply, maxSupply, marketCap, volumeUsd24Hr, percentPriceChange24Hr, vwap24Hr)" +
+            $" VALUES({price}, now(), {rank}, \"{symbol}\", \"{name}\", {supply}, {maxSupply}, {marketCap}, {volume}, {changePercent}, {vwap});";
+        //below comment is for debugging queries
+        //Console.WriteLine("\n" + command);
+        insertCoin.CommandText = command;
+        insertCoin.ExecuteNonQuery();
+        Console.WriteLine($"\n{coinName[i]} data added to database!");
     }
-    */
-
-    //preparing coin data
-    string price = btc.data.priceUsd;
-    string rank = btc.data.rank;
-    string symbol = btc.data.symbol;
-    string name = btc.data.name;
-    string supply = btc.data.supply;
-    string maxSupply = btc.data.maxSupply;
-    string marketCap = btc.data.marketCapUsd;
-    string volume = btc.data.volumeUsd24Hr;
-    string changePercent = btc.data.changePercent24Hr;
-    string vwap = btc.data.vwap24Hr;
-    if (maxSupply == null)
-        maxSupply = "-1";
-
-    //inserting coin data
-    using var insertCoin = new MySqlCommand();
-    insertCoin.Connection = sqlConnect;
-    string command = $"INSERT INTO allCoins" +
-        $" (price, date, _rank, symbol, name, supply, maxSupply, marketCap, volumeUsd24Hr, percentPriceChange24Hr, vwap24Hr)" +
-        $" VALUES({price}, now(), {rank}, \"{symbol}\", \"{name}\", {supply}, {maxSupply}, {marketCap}, {volume}, {changePercent}, {vwap});";
-    //below comment is for debugging queries
-    //Console.WriteLine("\n" + command);
-    insertCoin.CommandText = command;
-    insertCoin.ExecuteNonQuery();
-    Console.WriteLine($"\n{coinName} data added to database!");
-
     //sleeping before repeating process
-    int sleepTime = msBetweenApiCalls;
-    Console.WriteLine($"sleeping for {sleepTime} milliseconds");
-    Thread.Sleep(sleepTime);
-}
+    //int sleepTime = msBetweenApiCalls;
+    //Console.WriteLine($"sleeping for {sleepTime} milliseconds");
+    //Thread.Sleep(sleepTime);
+//}
