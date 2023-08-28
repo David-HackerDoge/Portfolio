@@ -1,0 +1,6 @@
+I have few projects I have completed for school that I'm not allowed to post in a public repo.
+Shoot me an email at davidallentimmons@gmail.com if you would like access to them.
+
+Some of those projects include:
+JSON Pretty Printer.
+Manual Grammar Lexer.
