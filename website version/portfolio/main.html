@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.1s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    }
+
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center{
+  text-align: center;
+}
+
+.leftPic{
+  float: left;
+  width: 20%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.leftPic img{
+  width: 100%;
+}
+.rightPic{
+  float: right;
+  width: 20%;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.rightPic img{
+  width: 100%;
+}
+.rightText{
+  float: left;
+  width: 30%;
+  font-size: large;
+}
+.leftText{
+  float: right;
+  width: 30%;
+  font-size: large;
+  text-align: right;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  background-color: midnightblue;
+  color: lime;
+  margin-top: 20px;
+}
+footer a {
+  color: lightblue;
+}
+.footer-element{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="main.html">Home</a>
+  <a href="main.html">Port Scanner</a>
+  <a href="main.html">Crypto Database</a>
+  <a href="main.html">Compiler</a>
+  <a href="main.html">Game Jams</a>
+  <a href="main.html">Website</a>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "300px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<h1 class="center">David Timmons</h1>
+<div class="flex-column">
+  <div class="item">
+    <div class="leftPic">
+      <img src="my-pic.jpg" alt="self portrait">
+    </div>
+    <div class="rightText">
+        <h1>UNDER CONSTRUCTION!</h1>
+        Hello there! Welcome to my portfolio website!<br>
+        I'm a recent Computer Science graduate at Utah Valley University with a wide range of technology interests. 
+        I'm especially interested in software engineering, cyber security, and game development.
+        Regardless of the discipline, I'm a big believer in design driven and test driven programming.
+        I enjoy creating quality variable names and ensuring my code won't cause any headaches for the next person to work with it.
+        That being said, I also believe there is only so much you can plan ahead for and I see the value in agile methodologies.
+        It's important to find a balance between designing and digging into the code.<br>
+        <br>
+        I'm looking for work where I can learn, contribute, and stay for the long term.
+        If that sounds like something you can offer, take a look around, check out the projects in the nav bar, and feel free to reach out to me. My contact info is in the footer :D
+    </div>
+    <div class="rightPic">
+      <img src="my-pic.jpg" alt="self portrait">
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="rightPic">
+      <img src="my-pic.jpg" alt="self portrait">
+    </div>
+    <div class="leftText">
+        After 8 and a half years of blood sweat and tears, I'm happy to say that I have <b>EARNED</b> my Bachelor's Degree of Computer Science.
+        I had a history of severe anxiety, depression, and panic attacks that took a lot of time and effort to overcome. 
+        Through hard work, introspection, and tenacity I have conquered my mental health, aquired knowledge, and honed my technical skills to this point.<br>
+        <br>
+        During my studies, I discovered a passion for Cyber Security, especially offensive security. I've studied hard to aquire 2 penetration testing certifications.
+        They are the GIAC WAPT and the eJPTv2. I've studied various cyber security topics and can bring security minded code to your organization as a software engineer.<br>
+        <br>
+        Well, what are you waiting for? Check out my projects in the navbar. There's a multithreaded port scanner written in C++, 
+        a crypto coin database populated in C# and queried and graphed in Python, a compiler made as my Senior Capstone Project, details of my game development escapades,
+        and design documents for this very website!
+    </div>
+    <div class="leftPic">
+      <img src="my-pic.jpg" alt="self portrait">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-element">(805)903-3216</div>
+  <div class="footer-element">DavidAllenTimmons@gmail.com</div>
+  <div class="footer-element"><a href="https://github.com/David-HackerDoge/Portfolio">GitHub</a></div>
+  <div class="footer-element"><a href="https://www.linkedin.com/in/david-timmons-30550b209/">Linkedin</a></div>
+</footer>
+
+</body>
+</html> 
+
+
+
+
