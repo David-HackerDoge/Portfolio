@@ -1,1 +1,0 @@
-This program solves the NQueens problem algorithmically and runs some tests to ensure it works properly
