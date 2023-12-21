@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+#hime generated code
+CompilerLexer.bin
+CompilerLexer.cs
+CompilerParser.bin
+CompilerParser.cs
